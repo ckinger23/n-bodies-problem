@@ -1,0 +1,19 @@
+How I ran and compiled upc_nbody.c:
+
+I tested a bunch of different data distributions, which I made a word doc to
+represent the code differences and result times, but the best time I received
+came from the most boring layout where the affinity was just "i" and the bodies
+and next array were not divided into blocks.
+
+I was compiling with:
+$ make threads=20 all
+
+running:
+srun -N 2 -n 2 --ntasks-per-thread=10 ./lab3.20
+
+  This got me a final time of apprximately 230,000 ms.
+
+upc_attempt.c:
+  I gave it a shot to try and use memput into a local array in order to get the
+  communication to be utilized through block movement instead of a ton of small
+  communications, but I could not figure it out.
